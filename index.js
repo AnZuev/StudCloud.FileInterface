@@ -34,5 +34,5 @@ function FileInterface(){
 }
 
 
-module.FileInterface = FileInterface;
+module.exports = FileInterface;
 
