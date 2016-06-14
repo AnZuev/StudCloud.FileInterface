@@ -1,6 +1,6 @@
 {
   "name": "@anzuev/studcloud.fileinterface",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "File interface for StudCloud project",
   "main": "index.js",
   "scripts": {
