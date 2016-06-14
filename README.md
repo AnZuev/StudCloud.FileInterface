@@ -8,7 +8,7 @@ npm i @anzuev/studcloud.fileinterface
 Модуль позволяет настраивать базу данных, с которой на данный момент нужно работать.
 Для этого необходимо передать объект mongooseConnection
 
-##API description
+##Example
 
 ### Configure
 ```javascript
