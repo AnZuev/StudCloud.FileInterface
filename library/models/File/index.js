@@ -7,7 +7,8 @@ let Q = require('q'),
 
 
 
-/** Добавление нового файла в коллекцию
+/**
+ * @summary Добавление нового файла в коллекцию
  *
  * @param url {string} - ссылка для скачивания
  * @param publicAccess {boolean} - публичный доступ?
@@ -98,7 +99,6 @@ File.statics.getFileById = function(id){
 			throw new DbError(null, 404, Util.format('No file found by id %s', id));
 		}
 	}).catch(function(err){
-		console.log(err);
 		if(err) deffer.reject(new DbError(err, 500));
 	});
 
@@ -168,6 +168,30 @@ File.methods.setFileUsed = function(save){
 
 };
 
+
+/** Метод для отметки файла, что он не используется
+ *   @summary Метод для отметки файла, что он не используется
+ *   @param {boolean} save нужно ли сохранять файл после изменения проперти
+ *   @return {object}
+ */
+
+File.methods.setFileUnused = function(save){
+	this.used = false;
+	let defer = Q.defer();
+
+	if(save){
+		this.saveFile()
+			.then(function(file){
+				defer.resolve(file);
+			})
+			.catch(function(err){
+				defer.reject(err);
+			})
+	}else{
+		return true;
+	}
+
+};
 
 
 /** Сохранение файла. Особенность - если происходит ошибка, то производится еще попытка сохранить файла(повторяется 5 раз)
